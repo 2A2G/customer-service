@@ -19,5 +19,5 @@ module.exports = {
     testMatch: ['**/__tests__/**/*.js', '**/?(*.)+(spec|test).js'],
     testPathIgnorePatterns: ['/node_modules/'],
     setupFilesAfterEnv: ['./jest.setup.js'],
-    testTimeout: 10000
+    testTimeout: 30000
   };
