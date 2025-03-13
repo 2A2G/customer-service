@@ -22,6 +22,7 @@ const getCustomerById = async (req, res) => {
 
 const createCustomer = async (req, res) => {
     try{
+        const { user_id, type_identity, number_identity, first_name, last_name, phone_number, birthdate, gender } = req.body;
         const customer = await customerService.createCustomer(req);
         res.status(201).json(customer);
     } catch (error){
@@ -31,6 +32,7 @@ const createCustomer = async (req, res) => {
 
 const updateCustomer = async (req, res) => {
     try{
+        const { user_id, type_identity, number_identity, first_name, last_name, phone_number, birthdate, gender } = req.body;
         const customer = await customerService.updateCustomer(req);
         res.status(200).json(customer);
     } catch (error){
