@@ -13,7 +13,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/customers', customerRoutes);
+app.use('/api-customers', customerRoutes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 const connectWithRetry = async (maxRetries = 5, delay = 5000) => {
@@ -24,7 +24,7 @@ const connectWithRetry = async (maxRetries = 5, delay = 5000) => {
       await sequelize.authenticate();
       console.log('Conexión a la base de datos establecida correctamente.');
       
-      await sequelize.sync({ force: true });
+      await sequelize.sync({ force: false }); //false para no borrar la base de datos
       console.log("Base de datos sincronizada con todos los modelos");
       return true;
     } catch (error) {
