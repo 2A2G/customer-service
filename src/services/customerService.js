@@ -20,6 +20,11 @@ const getCustomerById = async (id) => {
 
 const createCustomer = async (req) => {
     try {
+
+        if(!Number.isInteger(Number(req.body.number_identity))){
+            throw new Error('El número de identidad debe ser un entero');
+        }
+
         const customer = await Customer.findOne({ where: { number_identity: req.body.number_identity } });
         if (customer) {
             throw new Error("El customer ya existe con este número de identidad");
@@ -44,6 +49,10 @@ const createCustomer = async (req) => {
 
 const updateCustomer = async (req) => {
     try {
+        if(!Number.isInteger(Number(req.body.number_identity))){
+            throw new Error('El número de identidad debe ser un entero');
+        }
+
         const customer = await Customer.findByPk(req.params.id);
         if(customer){
             await customer.update({
